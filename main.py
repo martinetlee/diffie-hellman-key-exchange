@@ -37,6 +37,7 @@ g = 5
 alice_constructed_shared_key = dh_cal_sharedkey(bob_public_partial_key, alice_private_partial_key, p)
 bob_constructed_shared_key = dh_cal_sharedkey(alice_public_partial_key, bob_private_partial_key, p)
 
+print("The public parameters (p, g): (" + str(p) + " ," + str(g) + ")")
 print("Alice shared a partial key: " + str(alice_public_partial_key))
 print("Bob shared a partial key: " + str(bob_public_partial_key))
 print("Alice constructed a shared key: " + str(alice_constructed_shared_key))
