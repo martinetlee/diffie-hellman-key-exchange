@@ -1,3 +1,47 @@
+# a, b --> (gcd, X, Y), where aX + bY = gcd(a,b)
+def euclidean_algorithm(a,b):
+    if a > b:
+        curLarge = a
+        curSmall = b
+    else:
+        curLarge = b
+        curSmall = a
+
+    curSmallX = 1
+    curSmallY = 0
+
+    curLargeX = 0
+    curLargeY = 1
+
+
+    while(curSmall > 0):
+        multiplier = curLarge//curSmall
+        remainder = curLarge%curSmall
+
+        tempX = curLargeX - multiplier * curSmallX
+        tempY = curLargeY - multiplier * curSmallY
+
+        curLargeX = curSmallX
+        curLargeY = curSmallY
+        curSmallX = tempX
+        curSmallY = tempY
+
+        curLarge = curSmall
+        curSmall = remainder
+
+    gcd_result = curLarge
+    
+    if a > b:
+        X = curLargeX
+        Y = curLargeY
+    else:
+        X = curLargeY
+        Y = curLargeX
+
+    return [gcd_result, X, Y]
+
+
+
 class NumInFiniteField:
     def __init__(self, val, finitefield):
         self.finitefield = finitefield
@@ -76,4 +120,7 @@ class NumInFiniteField:
 
 
 
+    # Calculate the square root
+    #   One way is to utilize Fermat's little theorem
+    #   What is the other more efficient way?
 
